@@ -38,7 +38,12 @@ function playRound(playerSelection, computerSelection) {
 
 function game(playerSelection) {
 
-    if (roundsPlayed < rotalRound) {
+    if ( (playerScore === 5) || (computerScore === 5) ) {
+        rockBtn.disabled = true;
+        paperBtn.disabled = true;
+        scissorsBtn.disabled = true;
+        resultElem.textContent = `time to reset`;
+    } else {
         resetBtn.disabled = false;
 
         let computerSelection = getComputerChoice();
@@ -56,12 +61,7 @@ function game(playerSelection) {
 
         roundsPlayed++;
 
-    } else {
-        rockBtn.disabled = true;
-        paperBtn.disabled = true;
-        scissorsBtn.disabled = true;
-        resultElem.textContent = `you've played ${roundsPlayed} rounds. time to reset`;
-    }
+    } 
     console.log([playerScore, computerScore]);
 }
 
