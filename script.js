@@ -10,7 +10,7 @@ const resetBtn = document.getElementById("resetBtn");
 
 const choices = ['rock', 'paper', 'scissors'];
 const rotalRound = 5;
-let playerScore = 0, computerScore = 0, roundsPlayed = 1;
+let playerScore = 0, computerScore = 0;
 
 rockBtn.addEventListener('click', () => game('rock'));
 paperBtn.addEventListener('click', () => game('paper'));
@@ -42,7 +42,7 @@ function game(playerSelection) {
         rockBtn.disabled = true;
         paperBtn.disabled = true;
         scissorsBtn.disabled = true;
-        resultElem.textContent = `time to reset`;
+        resultElem.textContent = `scored 5, time to reset`;
     } else {
         resetBtn.disabled = false;
 
@@ -58,8 +58,6 @@ function game(playerSelection) {
 
         playerScoreElem.textContent = playerScore;
         computerScoreElem.textContent = computerScore;
-
-        roundsPlayed++;
 
     } 
     console.log([playerScore, computerScore]);
