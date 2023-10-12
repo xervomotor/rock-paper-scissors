@@ -8,16 +8,17 @@ const paperBtn = document.getElementById("paperBtn");
 const scissorsBtn = document.getElementById("scissorsBtn");
 const resetBtn = document.getElementById("resetBtn");
 
-// consts
 const choices = ['rock', 'paper', 'scissors'];
-const rotalRound = 3;
-let playerScore = 0, computerScore = 0, roundsPlayed = 0;
+const rotalRound = 5;
+let playerScore = 0, computerScore = 0, roundsPlayed = 1;
 
 rockBtn.addEventListener('click', () => game('rock'));
 paperBtn.addEventListener('click', () => game('paper'));
 scissorsBtn.addEventListener('click', () => game('scissors'));
 resetBtn.addEventListener('click', () => resetGame());
+resetBtn.disabled = true;
 
+// functions
 function getComputerChoice() {
     return choices[Math.floor(Math.random() * choices.length)];
 }
@@ -38,6 +39,7 @@ function playRound(playerSelection, computerSelection) {
 function game(playerSelection) {
 
     if (roundsPlayed < rotalRound) {
+        resetBtn.disabled = false;
 
         let computerSelection = getComputerChoice();
         let result = playRound(playerSelection, computerSelection);
@@ -55,15 +57,18 @@ function game(playerSelection) {
         roundsPlayed++;
 
     } else {
+        rockBtn.disabled = true;
+        paperBtn.disabled = true;
+        scissorsBtn.disabled = true;
         resultElem.textContent = `you've played ${roundsPlayed} rounds. time to reset`;
     }
-
-
     console.log([playerScore, computerScore]);
-
 }
 
 function resetGame() {
+    rockBtn.disabled = false;
+    paperBtn.disabled = false;
+    scissorsBtn.disabled = false;
     playerScore = 0;
     computerScore = 0; 
     roundsPlayed = 0;
