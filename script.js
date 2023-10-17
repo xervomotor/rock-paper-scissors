@@ -47,8 +47,8 @@ function game(playerSelection) {
         let result = playRound(playerSelection, computerSelection);
         log.appendChild(displayLog(result));
 
-        playerSelectedIcon.src = `../icons/${playerSelection}.png`;
-        computerSelectedIcon.src = `../icons/${computerSelection}.png`;
+        playerSelectedIcon.src = `icons/${playerSelection}.png`;
+        computerSelectedIcon.src = `icons/${computerSelection}.png`;
  
         if ( result === 'player wins') {
             playerScore++;
