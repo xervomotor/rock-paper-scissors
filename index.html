@@ -9,26 +9,35 @@
   <body>
     <h2>Rock Paper Scissors Game</h2>
 
-    <div>
-      <p>Choose your move:</p>
-      <button id="rockBtn" class="button">Rock</button>
-      <button id="paperBtn" class="button">Paper</button>
-      <button id="scissorsBtn" class="button">Scissors</button>
-    </div>
+    <div class="container">
+      <div class="selection col">
+        <div class="seletedIcon">
+          <img id="playerSelectedIcon" src="../icons/paper.png" alt="" />
+        </div>
+        <p class="score" id="playerScore">0</p>
+      </div>
 
-    <div>
-      <h3>Result:</h3>
-      <p id="result">-</p>
-    </div>
+      <div class="panel col">
+        <div>
+          <p>Choose your move:</p>
+          <button id="rockBtn" class="button">Rock</button>
+          <button id="paperBtn" class="button">Paper</button>
+          <button id="scissorsBtn" class="button">Scissors</button>
+        </div>
+        <div>
+          <button id="resetBtn" class="button">reset</button>
+        </div>
+        <div class="log">
+          <!-- display result logs -->
+        </div>
+      </div>
 
-    <div>
-      <h3>Scores:</h3>
-      <p>Player: <span id="playerScore">0</span></p>
-      <p>Computer: <span id="computerScore">0</span></p>
-    </div>
-
-    <div>
-      <button id="resetBtn" class="button">reset</button>
+      <div class="selection col">
+        <div class="seletedIcon">
+          <img id="computerSeletedIcon" src="icons/rock.png" alt="" />
+        </div>
+        <p class="score" id="computerScore">0</p>
+      </div>
     </div>
 
     <script src="script.js"></script>

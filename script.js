@@ -7,6 +7,9 @@ const rockBtn = document.getElementById("rockBtn");
 const paperBtn = document.getElementById("paperBtn");
 const scissorsBtn = document.getElementById("scissorsBtn");
 const resetBtn = document.getElementById("resetBtn");
+const log = document.querySelector('.log');
+const playerSelectedIcon = document.querySelector('#playerSelectedIcon');
+const computerSelectedIcon = document.querySelector('#computerSeletedIcon');
 
 const choices = ['rock', 'paper', 'scissors'];
 const rotalRound = 5;
@@ -38,29 +41,46 @@ function playRound(playerSelection, computerSelection) {
 
 function game(playerSelection) {
 
-    if ( (playerScore === 5) || (computerScore === 5) ) {
-        rockBtn.disabled = true;
-        paperBtn.disabled = true;
-        scissorsBtn.disabled = true;
-        resultElem.textContent = `scored 5, time to reset`;
-    } else {
         resetBtn.disabled = false;
 
         let computerSelection = getComputerChoice();
         let result = playRound(playerSelection, computerSelection);
-        resultElem.textContent = `${result}`;
+        log.appendChild(displayLog(result));
+
+        playerSelectedIcon.src = `../icons/${playerSelection}.png`;
+        computerSelectedIcon.src = `../icons/${computerSelection}.png`;
  
         if ( result === 'player wins') {
             playerScore++;
+            if (playerScore === 5) {
+                disableBtn();
+                playerScoreElem.style.color = 'red';
+            }
         } else if ( result === 'computer wins') {
             computerScore++;
+            if (computerScore === 5) {
+                disableBtn();
+                computerScoreElem.style.color = 'red';
+            }
         }
 
         playerScoreElem.textContent = playerScore;
         computerScoreElem.textContent = computerScore;
 
-    } 
+
     console.log([playerScore, computerScore]);
+}
+
+function disableBtn() {
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
+}
+
+function displayLog(result) {
+    const logElement = document.createElement('p');
+    logElement.textContent = `${result}`;
+    return logElement;
 }
 
 function resetGame() {
@@ -70,7 +90,15 @@ function resetGame() {
     playerScore = 0;
     computerScore = 0; 
     roundsPlayed = 0;
-    resultElem.textContent = `-`;
+    removeAllChilds(log);
     playerScoreElem.textContent = playerScore;
+    playerScoreElem.style.color = 'black';
     computerScoreElem.textContent = computerScore;
+    computerScoreElem.style.color = 'black';
+}
+
+function removeAllChilds(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
 }

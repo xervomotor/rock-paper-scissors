@@ -1,7 +1,66 @@
 body {
+  max-width: max-content;
+  margin: auto auto;
   background-color: white;
   font-family: Arial, sans-serif;
   color: black;
   text-align: center;
 }
 
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.col {
+  padding: 20px;
+  width: 400px;
+  height: 500px;
+  text-align: center;
+}
+
+.button {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  width: 80px;
+  height: 32px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #333333;
+}
+
+.button:disabled {
+  background-color: #888888;
+  cursor: not-allowed;
+}
+
+.score {
+  font-size: xx-large;
+}
+
+
+img {
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+}
+
+#computerSeletedIcon {
+  transform: scaleX(-1);
+}
+
+
+@media (max-width: 1200px) {
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}
