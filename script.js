@@ -7,6 +7,7 @@ const rockBtn = document.getElementById("rockBtn");
 const paperBtn = document.getElementById("paperBtn");
 const scissorsBtn = document.getElementById("scissorsBtn");
 const resetBtn = document.getElementById("resetBtn");
+const log = document.querySelector('.log');
 
 const choices = ['rock', 'paper', 'scissors'];
 const rotalRound = 5;
@@ -42,7 +43,7 @@ function game(playerSelection) {
 
         let computerSelection = getComputerChoice();
         let result = playRound(playerSelection, computerSelection);
-        resultElem.textContent = `${result}`;
+        log.appendChild(displayLog(result));
  
         if ( result === 'player wins') {
             playerScore++;
@@ -67,7 +68,12 @@ function disableBtn() {
     rockBtn.disabled = true;
     paperBtn.disabled = true;
     scissorsBtn.disabled = true;
-    resultElem.textContent = `scored 5, time to reset`;
+}
+
+function displayLog(result) {
+    const logElement = document.createElement('p');
+    logElement.textContent = `${result}`;
+    return logElement;
 }
 
 function resetGame() {
@@ -77,7 +83,13 @@ function resetGame() {
     playerScore = 0;
     computerScore = 0; 
     roundsPlayed = 0;
-    resultElem.textContent = `-`;
+    removeAllChilds(log);
     playerScoreElem.textContent = playerScore;
     computerScoreElem.textContent = computerScore;
+}
+
+function removeAllChilds(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
 }
