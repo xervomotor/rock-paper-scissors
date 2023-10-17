@@ -41,3 +41,18 @@ body {
   background-color: #888888;
   cursor: not-allowed;
 }
+
+.score {
+  font-size: xx-large;
+}
+
+
+img {
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+}
+
+#computerSeletedIcon {
+  transform: scaleX(-1);
+}

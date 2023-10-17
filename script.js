@@ -8,6 +8,8 @@ const paperBtn = document.getElementById("paperBtn");
 const scissorsBtn = document.getElementById("scissorsBtn");
 const resetBtn = document.getElementById("resetBtn");
 const log = document.querySelector('.log');
+const playerSelectedIcon = document.querySelector('#playerSelectedIcon');
+const computerSelectedIcon = document.querySelector('#computerSeletedIcon');
 
 const choices = ['rock', 'paper', 'scissors'];
 const rotalRound = 5;
@@ -44,16 +46,21 @@ function game(playerSelection) {
         let computerSelection = getComputerChoice();
         let result = playRound(playerSelection, computerSelection);
         log.appendChild(displayLog(result));
+
+        playerSelectedIcon.src = `../icons/${playerSelection}.png`;
+        computerSelectedIcon.src = `../icons/${computerSelection}.png`;
  
         if ( result === 'player wins') {
             playerScore++;
             if (playerScore === 5) {
                 disableBtn();
+                playerScoreElem.style.color = 'red';
             }
         } else if ( result === 'computer wins') {
             computerScore++;
             if (computerScore === 5) {
                 disableBtn();
+                computerScoreElem.style.color = 'red';
             }
         }
 
@@ -85,7 +92,9 @@ function resetGame() {
     roundsPlayed = 0;
     removeAllChilds(log);
     playerScoreElem.textContent = playerScore;
+    playerScoreElem.style.color = 'black';
     computerScoreElem.textContent = computerScore;
+    computerScoreElem.style.color = 'black';
 }
 
 function removeAllChilds(parent) {
