@@ -38,12 +38,6 @@ function playRound(playerSelection, computerSelection) {
 
 function game(playerSelection) {
 
-    if ( (playerScore === 5) || (computerScore === 5) ) {
-        rockBtn.disabled = true;
-        paperBtn.disabled = true;
-        scissorsBtn.disabled = true;
-        resultElem.textContent = `scored 5, time to reset`;
-    } else {
         resetBtn.disabled = false;
 
         let computerSelection = getComputerChoice();
@@ -52,15 +46,28 @@ function game(playerSelection) {
  
         if ( result === 'player wins') {
             playerScore++;
+            if (playerScore === 5) {
+                disableBtn();
+            }
         } else if ( result === 'computer wins') {
             computerScore++;
+            if (computerScore === 5) {
+                disableBtn();
+            }
         }
 
         playerScoreElem.textContent = playerScore;
         computerScoreElem.textContent = computerScore;
 
-    } 
+
     console.log([playerScore, computerScore]);
+}
+
+function disableBtn() {
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
+    resultElem.textContent = `scored 5, time to reset`;
 }
 
 function resetGame() {
